@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
 import {hashPassword, comparePassword} from '../utils/password.handle.js'
+import {sign} from '../utils/jwt.handle.js'
 
 export const register = async (req, res) => {
     const { name, email, password } = req.body;
@@ -20,5 +21,6 @@ export const login = async (req, res) => {
     const isCorrect = await comparePassword(password, existsUser.password)
     if(!isCorrect)return console.log("Incorrect password")
 
-    return "User logged in"
+    const token = sign({email:existsUser.email})
+    return {token};
 }
