@@ -10,19 +10,16 @@ export const saveActorController = async (req, res) => {
 
         const decoded = verify(token);
         if(!decoded) throw new HttpError(401, "Invalid token");
-        console.log(req.body);
-        console.log(req.file);
 
+        const imgURL = await saveImageActor(req.files[0]);
 
-        // const imgURL = await saveImageActor(req.file.image);
+        const actor = {
+             ...req.body,
+             image: imgURL
+         }
 
-        // const actor = {
-        //     ...req.body,
-        //     image: imgURL
-        // }
-
-        // const response = await saveActor(actor, decoded.id);
-        res.send("response");
+        const response = await saveActor(actor, decoded.id);
+        res.send(response);
     } catch (err) {
         handleHttpError(res, err.message, err);
     }
