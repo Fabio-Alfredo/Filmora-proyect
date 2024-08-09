@@ -12,3 +12,18 @@ const cleanFileName =(filename)=>{
 }
 
 
+readdirSync(PATH_ROUTER).filter((fileName)=>{
+    const cleanName = cleanFileName(fileName);
+    if(cleanName !== 'index'){
+      import(`./${cleanName}.route.js`).then((module)=>{
+          router.use(`/${cleanName}`, module.router);
+      }).catch((err)=>{
+          console.error(`Error to import ${cleanName} route`, err);
+      })
+
+    }
+})
+
+export{
+    router
+};
