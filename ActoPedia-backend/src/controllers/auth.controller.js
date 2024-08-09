@@ -10,3 +10,11 @@ export const registerController = async (req, res)=>{
     }
 }
 
+export const loginController = async (req, res)=>{
+    try{
+        const response = await login(req, res)
+        res.send(response)
+    }catch(err){
+        console.log(err)
+    }
+}
