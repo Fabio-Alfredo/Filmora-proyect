@@ -4,7 +4,9 @@ import {handleHttpError} from '../utils/error.handle.js'
 
 export const registerController = async (req, res)=>{
     try{
+        
         const response = await register(req, res)
+        
         res.send(response)
     }catch(err){
         console.log(err)
@@ -14,6 +16,7 @@ export const registerController = async (req, res)=>{
 
 export const loginController = async (req, res)=>{
     try{
+        console.log('body: ', req.body)
         const response = await login(req, res)
         res.send(response)
     }catch(err){

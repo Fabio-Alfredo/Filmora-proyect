@@ -17,8 +17,9 @@ export const saveImageActor = async (image) => {
             folder: 'strive',
         })
         return result.secure_url;
-        
+
     } catch (err) {
+        console.log("cae en el catch");
         throw new HttpError(400, err.message);
     }
 }
