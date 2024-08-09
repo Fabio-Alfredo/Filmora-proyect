@@ -1,4 +1,4 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import {hashPassword, comparePassword} from '../utils/password.handle.js'
 
 export const register = async (req, res) => {
