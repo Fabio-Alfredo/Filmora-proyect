@@ -9,3 +9,8 @@ export const sign=(payload)=>{
     })
     return token;
 }
+
+export const verify=(token)=>{
+    const decoded = jwt.verify(token, JWT);
+    return decoded;
+}
