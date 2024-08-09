@@ -12,3 +12,13 @@ export const register = async (req, res) => {
     return "user created"   
 }
 
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    const existsUser = await User.findOne({email:email})
+    if(!existsUser)return console.log("User not found")
+
+    const isCorrect = await comparePassword(password, existsUser.password)
+    if(!isCorrect)return console.log("Incorrect password")
+
+    return "User logged in"
+}
