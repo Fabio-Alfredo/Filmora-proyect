@@ -1,7 +1,7 @@
 import React from 'react';
 import DetailList from './DetailList';
 
-const CreditsActor = ({titulo = 'peliculas', peliculas, libros, series, book }) => {
+const CreditsActor = ({titulo = 'peliculas', peliculas, libros }) => {
     return (
         <>
             <div className='px-10 py-6'>
@@ -10,11 +10,6 @@ const CreditsActor = ({titulo = 'peliculas', peliculas, libros, series, book }) 
                     <DetailList title='Peliculas' info='Pedro Picapiedra' />
                     <DetailList title='Personajes' info='Pablo' />
                     <DetailList title='Lanzamiento' info='2000' />
-                    {
-                        book ? <DetailList title='Autor' info='Pedro Picapiedra' /> : null
-                    }{
-                        series ? <DetailList title='Temporadas' info='5' /> : null
-                    }
                 </div>
             </div>
         </>

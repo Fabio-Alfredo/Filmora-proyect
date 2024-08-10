@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-      {/* <ListActors /> */}
-      <IformationActors />
+      <ListActors />
+      {/* <IformationActors /> */}
     </>
   )
 }
