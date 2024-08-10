@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderInfo from '../components/InformationActorsComponents.jsx/HeaderInfo';
-import Biography from '../components/InformationActorsComponents.jsx/Biography';
-import CreditsActor from '../components/InformationActorsComponents.jsx/CreditsActor';
+import HeaderInfo from '../components/InformationActorsComponents/HeaderInfo';
+import Biography from '../components/InformationActorsComponents/Biography';
+import CreditsActor from '../components/InformationActorsComponents/CreditsActor';
 
 
 const IformationActors = () => {
