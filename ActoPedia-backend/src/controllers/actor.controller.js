@@ -1,5 +1,5 @@
 import { verify } from "../utils/jwt.handle.js";
-import { saveActor, saveImageActor, getActors} from "../service/actor.service.js";
+import { saveActor, saveImageActor, getActors, getActorsByName, deleteActor} from "../service/actor.service.js";
 import { handleHttpError, HttpError } from "../utils/error.handle.js";
 
 
@@ -40,6 +40,16 @@ export const getActorsByNameController = async (req, res) => {
         const { name } = req.query;
         const actors = await getActorsByName(name);
         res.send(actors);
+    }catch(err){
+        handleHttpError(res, err.message, err);
+    }
+}
+
+export const deleteActorController = async (req, res) => {
+    try{
+        const { id } = req.params;
+        const response = await deleteActor(id);
+        res.send(response);
     }catch(err){
         handleHttpError(res, err.message, err);
     }
