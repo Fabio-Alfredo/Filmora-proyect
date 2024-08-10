@@ -10,6 +10,22 @@ export const saveActor = async (actor, id) => {
     return newAcot
 }
 
+export const getActors = async () => {
+    const actors = await Actor.find();
+    return actors;
+}
+
+export const getActorsByName = async (name) => {
+    const actor = await Actor.find({mame:{ $regex: name, $options: 'i' }});
+    return actor;
+}
+
+export const deleteActor = async (id) => {
+    const actor = await Actor.findByIdAndDelete(id);
+    if (!actor) throw new HttpError(404, "Actor not found");
+    return "deleted";
+}
+
 export const saveImageActor = async (file) => {
 
     const extension = file.mimetype.split('/')[1];
