@@ -34,3 +34,13 @@ export const getActorsController = async (req, res) => {
         handleHttpError(res, err.message, err);
     }
 }
+
+export const getActorsByNameController = async (req, res) => {
+    try{
+        const { name } = req.query;
+        const actors = await getActorsByName(name);
+        res.send(actors);
+    }catch(err){
+        handleHttpError(res, err.message, err);
+    }
+}
