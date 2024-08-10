@@ -8,6 +8,15 @@ const ListActors = () => {
             <hr className='h-0.5 bg-black mb-6 mx-4' />
                 <div className='overflow-y-auto h-[35vh] md:h-[50vh] px-4'>
                    <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
+                   <CardActor />
                 </div>
             <hr className='h-0.5 bg-black my-8 mx-4' />
         </div>
