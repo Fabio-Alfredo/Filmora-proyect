@@ -1,6 +1,7 @@
 import { cloudinary } from '../config/cloudinaryConecction.js';
 import { Actor } from '../models/actor.model.js';
 import { HttpError } from '../utils/error.handle.js';
+import { paginate } from '../utils/pagination.handle.js';
 
 export const saveActor = async (actor, id) => {
     const existActor = await Actor.findOne({ name: actor.name });
@@ -8,6 +9,22 @@ export const saveActor = async (actor, id) => {
 
     const newAcot = await Actor.create({ ...actor, createBy: id });
     return newAcot
+}
+
+export const getActors = async (page, limit, filters) => {
+    const actors = await paginate(Actor, page, limit, filters);
+    return actors;
+}
+
+export const getActorsByName = async (name) => {
+    const actor = await Actor.find({mame:{ $regex: name, $options: 'i' }});
+    return actor;
+}
+
+export const deleteActor = async (id) => {
+    const actor = await Actor.findByIdAndDelete(id);
+    if (!actor) throw new HttpError(404, "Actor not found");
+    return "deleted";
 }
 
 export const saveImageActor = async (file) => {
