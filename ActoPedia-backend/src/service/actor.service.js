@@ -17,7 +17,7 @@ export const getActors = async (page, limit, filters) => {
 }
 
 export const getActorsByName = async (name) => {
-    const actor = await Actor.find({mame:{ $regex: name, $options: 'i' }});
+    const actor = await Actor.find({name:{ $regex: name, $options: 'i' }}).limit(10);
     return actor;
 }
 
