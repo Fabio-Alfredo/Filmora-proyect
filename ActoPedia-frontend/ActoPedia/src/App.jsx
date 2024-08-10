@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ListActors from './pages/ListActors'
 import IformationActors from './pages/IformationActors'
 import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <>
       {/* <ListActors /> */}
       {/* <IformationActors /> */}
-      <SignIn />
+      {/* <SignIn /> */}
+      <SignUp />
     </>
   )
 }
