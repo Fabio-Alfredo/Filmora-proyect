@@ -54,10 +54,6 @@ const actorSchema = new Schema({
             type: String,
             required: true
         },
-        year: {
-            type: Number,
-            required: true
-        },
         author: {
             type: String,
             default: "Anonimo"
@@ -70,6 +66,10 @@ const actorSchema = new Schema({
         },
         personage: {
             type: String,
+            required: true
+        },
+        year: {
+            type: Number,
             required: true
         }
     }],
