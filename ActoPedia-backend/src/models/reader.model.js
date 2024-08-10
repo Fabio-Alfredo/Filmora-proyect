@@ -1,9 +1,14 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 const readCharacterSchema = new Schema({{
     actorId: {
         type: Schema.Types.ObjectId,
         ref: "Actor",
+        required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true
     },
     markerAt: {
@@ -14,6 +19,6 @@ const readCharacterSchema = new Schema({{
 
 const Reader = model("Reader", readCharacterSchema);
 
-export{
+export {
     Reader
 }
