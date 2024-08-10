@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import ListActors from './pages/ListActors'
+import IformationActors from './pages/IformationActors'
 
 
 function App() {
@@ -6,7 +8,8 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center'>Initial proyect</ h1>
+      <ListActors />
+      {/* <IformationActors /> */}
     </>
   )
 }
