@@ -16,7 +16,7 @@ export const registerController = async (req, res)=>{
 
 export const loginController = async (req, res)=>{
     try{
-        console.log('body: ', req.body)
+        
         const response = await login(req, res)
         res.send(response)
     }catch(err){

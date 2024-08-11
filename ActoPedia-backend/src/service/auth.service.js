@@ -22,6 +22,6 @@ export const login = async (req, res) => {
     const isCorrect = await comparePassword(password, existsUser.password)
     if(!isCorrect) throw new HttpError(400, "Invalid credentials")
 
-    const token = sign({email:existsUser.email})
+    const token = sign({email:existsUser.email, id:existsUser._id})
     return {token};
 }
