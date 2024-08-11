@@ -7,6 +7,7 @@ import ProtectedRoute from './components/Protected/ProtectedRoute'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { useContext } from 'react'
 import { AuthContext } from './context/AuthContext'
+import FormActor from './pages/FormActor'
 
 
 
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
@@ -28,7 +29,8 @@ function App() {
             <Route path="/IformationActor" element={<IformationActors />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <FormActor />
     </>
   )
 }
