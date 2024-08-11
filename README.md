@@ -1,8 +1,8 @@
-# ActoPedia-proyect
+## 🎬 Actopedia: ¡Descubre Todo Sobre Actores y Personajes!
 
 __Actopedia is an app designed to explore and discover detailed information about actors and characters from movies, TV shows, and books. In addition to allowing you to learn more about these characters, Actopedia makes it easy to find new actors and their latest productions. Users can mark actors as “read” to keep track of their research. The app also features a secure registration and login system, ensuring that users’ information is protected.__
 
-# ActoPedia-Backend
+#🚀 ActoPedia Backend
 
 ## Facility
 Make sure you have Node.js and npm installed. Then run:
@@ -74,7 +74,7 @@ The main API endpoints are detailed below:
 - **curl http://localhost:3001/auth**
 
 
-# ActoPedia-Frontend
+#🎨 ActoPedia Frontend
   
 ## Facility
 Make sure you have Node.js and npm installed. Then run:
