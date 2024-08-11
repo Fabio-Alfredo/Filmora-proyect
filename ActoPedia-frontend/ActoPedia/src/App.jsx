@@ -25,7 +25,7 @@ function App() {
             <Route path="/home" element={<ListActors />} />
           </Route>
           <Route element={<ProtectedRoute canActivate={token} redirectPath='/'/>}>
-            <Route path="/IformationActors" element={<IformationActors />} />
+            <Route path="/IformationActor" element={<IformationActors />} />
           </Route>
         </Routes>
       </BrowserRouter>
