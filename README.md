@@ -73,3 +73,27 @@ The main API endpoints are detailed below:
 - **curl http://localhost:3001/auth**
 
 
+## ActoPedia-Frontend
+  
+## Facility
+Make sure you have Node.js and npm installed. Then run:
+
+```bash
+npm install
+```
+
+# setting
+Try to generate the .env file to place the variables
+
+```
+REACT_APP_API_URL=api_base_url
+```
+
+# Wear
+To start the application, run:
+```
+npm run dev
+```
+
+
+
