@@ -1,52 +1,56 @@
 import React, { useState } from 'react';
 import InputField from '../AuthComponents/InputField';
+import { useForm } from '../../hooks/useForm';
+import { IoIosArrowDown } from "react-icons/io";
 
-const MediaForm = ({input}) => {
+
+const MediaForm = ({ input, tittle, data }) => {
+
     const [movies, setMovies] = useState([]);
-
-    const [newMovie, setNewMovie] = useState({ title: '', personage: '', year: '' });
+    const { title, personage, year, InputChange, resetForm } = useForm({ title: '', personage: '', year: '' });
     const [expanded, setExpanded] = useState(false);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewMovie({ ...newMovie, [name]: value });
+    const addMovie = () => {
+        if (title && personage && year) {
+            const formValues = { title, personage, year };
+            const newItem = [...movies, formValues]
+            setMovies(newItem);
+            resetForm();
+            data(newItem);
+        }
+        
     };
+
     const toggleExpand = () => {
         setExpanded(!expanded);
     };
 
-    const addMovie = () => {
-        if (newMovie.title && newMovie.personage && newMovie.year) {
-            setMovies([...movies, newMovie]);
-            setNewMovie({ title: '', personage: '', year: '' });
-        }
-    };
-
     return (
-        <form >
-            <button type="button" onClick={toggleExpand}>
-                {expanded ? 'Compactar' : 'Expandir'} Películas
+        <div className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center">
+            <button className='flex cursor-pointer hover:-translate-x-1 duration-500' type="button" onClick={toggleExpand}>
+                {expanded ? 'Ocultar' : 'Agregar'} {tittle}
+                <IoIosArrowDown />
             </button>
             {expanded && movies.map((movie, index) => (
                 <div key={index}>
-                    <h3>Película {index + 1}</h3>
-                    <p>Título: {movie.title}</p>
-                    <p>Personaje: {movie.personage}</p>
-                    <p>Año: {movie.year}</p>
+                    <h3 className='font-bold'>Película {index + 1}</h3>
+                    <p className='font-bold'>Título: {movie.title}</p>
+                    <p className='font-bold'>Personaje: {movie.personage}</p>
+                    <p className='font-bold'>{input} {movie.year}</p>
                 </div>
             ))}
             {
-                expanded?(
-                    <div>
-                        <InputField inputName='title' type='text' inputValue={newMovie.title} inputOnchage={handleInputChange}  />
-                        <InputField inputName='personage' type='text' inputValue={newMovie.personage} inputOnchage={handleInputChange} />
-                        <InputField inputName='year' type='number' inputValue={newMovie.year} inputOnchage={handleInputChange} />
+                expanded ? (
+                    <div className='gap-5'>
+                        <InputField inputName='title' type='text' inputValue={title} inputOnchage={InputChange} />
+                        <InputField inputName='personage' type='text' inputValue={personage} inputOnchage={InputChange} />
+                        <InputField inputName='year' type='number' inputValue={year} inputOnchage={InputChange} />
                         <button type="button" onClick={addMovie}>Agregar Película</button>
                     </div>
-                ): null
+                ) : null
             }
 
-        </form>
+        </div>
     );
 };
 
