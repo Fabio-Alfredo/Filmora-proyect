@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputField from '../components/AuthComponents/InputField';
 import { NavLink } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import {login} from '../services/Auth.service';
+import { AuthContext } from '../context/AuthContext';
 
 const SignIn = () => {
+
+    const {saveToken} = useContext(AuthContext );
 
     const{email, password, InputChange} = useForm({
         email: '',
@@ -19,7 +22,8 @@ const SignIn = () => {
                 password
             }
             const res = await login(data);
-            console.log(res);
+            saveToken(res.token);
+            
         }catch(error){
             console.error(error);
         }
