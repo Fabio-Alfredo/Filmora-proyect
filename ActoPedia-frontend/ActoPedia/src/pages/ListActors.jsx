@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import CardActor from '../components/ListActorsComponent.jsx/CardActor';
+import CardActor from '../components/ListActorsComponent/CardActor';
 import { getActors } from '../services/actor.service';
 
 const ListActors = () => {
