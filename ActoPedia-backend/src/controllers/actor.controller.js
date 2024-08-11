@@ -10,8 +10,8 @@ export const saveActorController = async (req, res) => {
 
         const decoded = verify(token);
         if(!decoded) throw new HttpError(401, "Invalid token");
+        const imgURL = await saveImageActor(req.body.image);
 
-        const imgURL = await saveImageActor(req.files[0]);
 
         const actor = {
              ...req.body,

@@ -17,7 +17,7 @@ export const getActors = async (page, limit, filters) => {
 }
 
 export const getActorsByName = async (name) => {
-    const actor = await Actor.find({name:{ $regex: name, $options: 'i' }}).limit(10);
+    const actor = await Actor.find({ name: { $regex: name, $options: 'i' } }).limit(10);
     return actor;
 }
 
@@ -27,20 +27,15 @@ export const deleteActor = async (id) => {
     return "deleted";
 }
 
-export const saveImageActor = async (file) => {
-
-    const extension = file.mimetype.split('/')[1];
-    const validExtensions = ['png', 'jpg', 'jpeg'];
-    if (!validExtensions.includes(extension)) {
-        throw new HttpError(400, "Invalid file extension");
-    }
-
+export const saveImageActor = async (base64Image, publicId) => {
     try {
-        return new Promise((resolve, reject) => {
-            const uploadStream = cloudinary.uploader.upload_stream(
+        const result = await new Promise((resolve, reject) => {
+            cloudinary.uploader.upload_stream(
                 {
                     folder: 'actors',
-                    public_id: file.originalname,
+                    public_id: publicId,
+                    resource_type: 'image', // Asegúrate de especificar el tipo de recurso
+                    encoding: 'base64' // Asegúrate de especificar el tipo de codificación
                 },
                 (error, result) => {
                     if (error) {
@@ -48,10 +43,10 @@ export const saveImageActor = async (file) => {
                     }
                     resolve(result.secure_url);
                 }
-            );
-
-            uploadStream.end(file.buffer);
+            ).end(base64Image);
         });
+
+        return result;
     } catch (err) {
         throw new HttpError(400, `Image upload failed: ${err.message}`);
     }
