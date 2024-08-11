@@ -5,10 +5,11 @@ import { useForm } from '../hooks/useForm';
 import { login } from '../services/Auth.service';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
+import { getUser } from '../services/user.service';
 
 const SignIn = () => {
 
-    const { saveToken } = useContext(AuthContext);
+    const { saveToken, saveUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const { email, password, InputChange } = useForm({
@@ -25,6 +26,8 @@ const SignIn = () => {
             }
             const res = await login(data);
             saveToken(res.token);
+            const user = await getUser();
+            saveUser(user);
             navigate('/home');
         } catch (error) {
             Swal.fire({
