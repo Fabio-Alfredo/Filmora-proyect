@@ -10,7 +10,9 @@ const MediaForm = ({ input, tittle, data }) => {
     const { title, personage, description, InputChange, resetForm } = useForm({ title: '', personage: '', description: '' });
     const [expanded, setExpanded] = useState(false);
 
-    const addMovie = () => {
+    const addMovie = (e) => {
+        e.stopPropagation()
+        e.preventDefault();
         if (title && personage && description) {
             const formValues = { title, personage, description };
             const newItem = [...movies, formValues]
@@ -45,7 +47,9 @@ const MediaForm = ({ input, tittle, data }) => {
                         <InputField nameField='Titulo' inputName='title' type='text' inputValue={title} inputOnchage={InputChange} />
                         <InputField nameField='Personaje' inputName='personage' type='text' inputValue={personage} inputOnchage={InputChange} />
                         <InputField nameField='description' inputName='description' type='text' inputValue={description} inputOnchage={InputChange} />
-                        <input onClick={addMovie} className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Agregar" />
+                        <button onClick={addMovie} className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black">
+                            Agregar {tittle}
+                        </button>
 
                     </div>
                 ) : null
