@@ -22,7 +22,7 @@ const CardActor = ({actor}) => {
                 }`}>
                 <div>
                     <input type='checkbox' className='mr-2' onChange={handleCheck} />
-                    <img className='rounded-full w-16 h-16' src='https://www.unicef.org/sites/default/files/styles/media_large_image/public/UN0318726_CRC30_SP.jpg.webp?itok=5V7HpisK' />
+                    <img className='rounded-full w-16 h-16' src={actor.image} />
                 </div>
                 <div className='flex flex-col justify-start items-center my-1'>
                     <p className='font-popins font-bold text-sm sm:text-lg lg:text-xl items-center p-0 md:px-2 select-none '>Actor</p>

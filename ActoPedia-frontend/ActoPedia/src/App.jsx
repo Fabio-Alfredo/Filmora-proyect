@@ -17,20 +17,22 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
 
-          <Route element={<ProtectedRoute canActivate={token} redirectPath='/'/>}>
+          <Route element={<ProtectedRoute canActivate={token} redirectPath='/' />}>
             <Route path="/home" element={<ListActors />} />
           </Route>
-          <Route element={<ProtectedRoute canActivate={token} redirectPath='/'/>}>
+          <Route element={<ProtectedRoute canActivate={token} redirectPath='/' />}>
             <Route path="/IformationActor" element={<IformationActors />} />
           </Route>
+          <Route element={<ProtectedRoute canActivate={token} redirectPath='/FormActor' />}>
+            <Route path="/FormActor" element={<FormActor />} />
+          </Route>
         </Routes>
-      </BrowserRouter> */}
-      <FormActor />
+      </BrowserRouter>
     </>
   )
 }

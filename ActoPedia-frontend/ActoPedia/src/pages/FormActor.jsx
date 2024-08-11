@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import ActorData from '../components/FormActorsComponents/ActorData';
 import MediaForm from '../components/FormActorsComponents/MediaForm';
+import { createActor } from '../services/actor.service';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from "react-icons/fa";
+
 
 
 const FormActor = () => {
@@ -10,25 +14,31 @@ const FormActor = () => {
     const [books, setBooks] = useState([]);
     const [voices, setVoices] = useState([]);
     const [actor, setActor] = useState({});
+    const navigate = useNavigate();
 
-    const handleFileChange = (e) => {
-        e.preventDefault();
-        const data = {
-            actor: actor,
-            movies: movies,
-            series: series,
-            books: books,
-            voices: voices
+    const handleFileChange = async (e) => {
+        try {
+            e.preventDefault();
+            const data = { ...actor, movies, series, books, voices };
+            console.log(data);
+            const res = await createActor(data);
+            console.log(res);
+            navigate('/home');
+        } catch (error) {
+            console.log(error);
         }
-
-        console.log(data);
+    }
+    
+    const handleExit = () => {
+        navigate('/home');
     }
 
     return (
         <div className='flex items-center justify-center w-full bg-color-primary px-6  h-screen'>
             <div className='w-full flex p-4 sm:p-8 shadow-2xl overflow-y-auto rounded-3xl items-center justify-center bg-white max-h-[80%] lg:w-2/3  xl:w-1/2' > {/* query */}
-                <form onSubmit={handleFileChange} className="min-w-[25%] max-w-[70%] h-fit py-14 flex flex-col  items-center justify-center gap-6">
-                    <ActorData data={setActor}/>
+            <FaArrowLeft className='text-2xl absolute top-[13%] -left-[25%] w-full cursor-pointer hover:-translate-x-1 duration-500' onClick={handleExit} />
+                <form onSubmit={handleFileChange} className="min-w-[25%] mt-10 relative max-w-[75%] h-fit py-14 flex flex-col  items-center justify-center gap-6">
+                    <ActorData data={setActor} />
                     <MediaForm input='year' tittle='Peliculas' data={setMovies} />
                     <MediaForm input='temporada' tittle='Series' data={setSeries} />
                     <MediaForm input='libro' tittle='Libros' data={setBooks} />
