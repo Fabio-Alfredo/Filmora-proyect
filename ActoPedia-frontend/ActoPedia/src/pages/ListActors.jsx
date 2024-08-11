@@ -5,6 +5,7 @@ import { GoPlusCircle } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 
 
+
 const ListActors = () => {
 
     const [actors, setActors] = useState([]);
