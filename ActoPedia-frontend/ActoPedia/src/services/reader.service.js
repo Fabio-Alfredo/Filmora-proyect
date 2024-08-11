@@ -2,31 +2,30 @@ import axios from "axios";
 
 const getToken = () => localStorage.getItem('token');
 
-export const getActors = async () => {
+export const getReaders = async () => {
     try {
-        const res = await axios.get('http://localhost:3001/actor/authors', {
+        const res = await axios.get('http://localhost:3001/reader/getReaders', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}`
             }
         });
         return res.data;
-    } catch (error) {
+    }catch(error){
         throw error.response.data;
     }
 }
 
-export const createActor = async (actor) => {
+export const addReader = async (reader) => {
     try {
-        const res = await axios.post('http://localhost:3001/actor/create', actor, {
+        const res = await axios.post('http://localhost:3001/reader/postReader', reader, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}`
-            },
+            }
         });
         return res.data;
-    } catch (error) {
+    }catch(error){
         throw error.response.data;
     }
 }
-

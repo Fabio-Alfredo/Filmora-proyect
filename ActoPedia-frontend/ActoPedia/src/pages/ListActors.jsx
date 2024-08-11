@@ -4,12 +4,14 @@ import { getActors } from '../services/actor.service';
 import { GoPlusCircle } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 import InformationUser from '../components/ListActorsComponent/InformationUser';
+import { getReaders } from '../services/reader.service';
 
 
 
 const ListActors = () => {
 
     const [actors, setActors] = useState([]);
+    const [readers, setReaders] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,7 +20,9 @@ const ListActors = () => {
 
     const getActorsFuction = async () => {
         const res = await getActors();
-        console.log(res);
+        const resp = await getReaders();
+        console.log(resp);
+        setReaders(resp);
         setActors(res);
     }
 
@@ -34,7 +38,7 @@ const ListActors = () => {
                 <div className='overflow-y-auto h-[35vh] md:h-[50vh] px-4 '>
                     {
                         actors?.map(actor => (
-                            <CardActor key={actor.createAt} actor={actor} />
+                            <CardActor key={actor.createAt} actor={actor} reader={readers} />
                         ))
                     }
                 </div>
