@@ -25,7 +25,7 @@ const IformationActors = () => {
 
                 <div className='overflow-y-auto h-[35vh] md:h-[50vh] px-4'>
                     <FaArrowLeft className='text-2xl cursor-pointer hover:-translate-x-1 duration-500' onClick={handleExit}/>
-                    <HeaderInfo name={state.name} year={state.age} />
+                    <HeaderInfo name={state.name} year={state.age} image={state.image} />
                     <Biography Biography={state.biography} />
                     <CreditsActor titulo='peliculas' data={state.movies} />
                     <CreditsActor titulo='series' data={state.series} />
