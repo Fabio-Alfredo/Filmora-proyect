@@ -1,11 +1,14 @@
 import React from 'react';
 import InputField from '../components/AuthComponents/InputField';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { register } from '../services/Auth.service';
+import Swal from 'sweetalert2';
+
 
 const SignUp = () => {
 
+    const navigate = useNavigate();
     const { name, email, password, InputChange } = useForm({
         name: '',
         email: '',
@@ -21,9 +24,25 @@ const SignUp = () => {
                 password
             }
             const res = await register(data);
-            console.log(data);
+            console.log(res);
+            Swal.fire({
+                position: "center",
+                icon: "Genial",
+                title: "Usuario registrado",
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                navigate('/');
+            })
+
         } catch (error) {
-            console.error(error);
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: `${error.error}`,
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 
