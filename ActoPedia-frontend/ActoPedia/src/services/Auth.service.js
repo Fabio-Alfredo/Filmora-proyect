@@ -7,7 +7,7 @@ export const login = async (data) => {
         const res = await axios.post(API_URL_LOGIN, data);
         return res.data;
     }catch(error){
-        console.log(error.response.data);
+        throw error.response.data;
     }
 }
 
@@ -16,6 +16,7 @@ export const register = async (data) => {
         const res = await axios.post(API_URL_REGISTER, data);
         return res.data;
     }catch(error){
-        console.log(error.response.data);
+        console.log(error);
+         throw error.response.data;
     }
 }

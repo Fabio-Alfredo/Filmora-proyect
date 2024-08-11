@@ -21,10 +21,12 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
 
-          <Route element={<ProtectedRoute canActivate={token} redirectPath="home" />}>
-            <Route path="/ListActors" element={<ListActors />} />
+          <Route element={<ProtectedRoute canActivate={token} redirectPath='/'/>}>
+            <Route path="/home" element={<ListActors />} />
           </Route>
-          {/* <Route path="/IformationActors" element={<IformationActors />} /> */}
+          <Route element={<ProtectedRoute canActivate={token} redirectPath='/'/>}>
+            <Route path="/IformationActor" element={<IformationActors />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

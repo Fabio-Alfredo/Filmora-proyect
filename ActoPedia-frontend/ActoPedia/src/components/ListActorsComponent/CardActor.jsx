@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 
 const CardActor = ({actor}) => {
 
     const [checked, setChecked] = useState(false);
+    const navigate = useNavigate();
 
     const handleCheck = () => {
         setChecked(!checked);
     }
 
+    const handleClik=()=>{
+        navigate('/IformationActor', {state: actor});
+    }
+
     return (
         <>
 
-            <div className={`  font-popins flex items-center cursor-pointer flex-wrap justify-between px-3 md:hover:px-3 md:px-6  w-full mt-2 py-2 text-lg list-none rounded-xl hover:bg-slate-100 hover:-translate-y-1 duration-500 ${checked ? 'opacity-50' : ''
+            <div onClick={handleClik} className={`  font-popins flex items-center cursor-pointer flex-wrap justify-between px-3 md:hover:px-3 md:px-6  w-full mt-2 py-2 text-lg list-none rounded-xl hover:bg-slate-100 hover:-translate-y-1 duration-500 ${checked ? 'opacity-50' : ''
                 }`}>
                 <div>
                     <input type='checkbox' className='mr-2' onChange={handleCheck} />
