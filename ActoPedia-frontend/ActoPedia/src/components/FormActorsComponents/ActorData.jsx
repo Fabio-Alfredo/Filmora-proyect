@@ -28,7 +28,7 @@ const ActorData = ({ data }) => {
         <>
             <div className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center"   >
                 <InputField nameField="Nombre" inputName={"name"} type="text" inputValue={name} inputOnchage={InputChange} placeH="e.g. NimbusX" />
-                <InputField nameField="Edad" inputName={"age"} type="text" inputValue={age} inputOnchage={InputChange} />
+                <InputField nameField="Edad" inputName={"age"} type="number" inputValue={age} placeH='e.g. 12' inputOnchage={InputChange} />
                 <InputField nameField='Fotografia' inputName={"image"} type="file" inputOnchage={handleFileChange} />
                 <div className='w-full'>
                     <span className={`font-Nunito font-medium text-lg self-start 'text-white'}`}>biography</span>
