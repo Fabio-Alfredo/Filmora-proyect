@@ -4,7 +4,7 @@ import { useForm } from '../../hooks/useForm';
 
 const ActorData = ({ data }) => {
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState();
     const { name, age, biography, InputChange } = useForm({ name: '', age: '', biography: '' });
 
     const handleFileChange = (event) => {
@@ -13,10 +13,10 @@ const ActorData = ({ data }) => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImage(reader.result);
-                onDataChange(prev => ({
-                    ...prev,
-                    image: reader.result
-                }));
+                // onDataChange(prev => ({
+                //     ...prev,
+                //     image: reader.result
+                // }));
             };
             reader.readAsDataURL(file);
         }
