@@ -27,7 +27,7 @@ const MediaForm = ({ input, tittle, data }) => {
 
     return (
         <div className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center">
-            <button className='flex cursor-pointer hover:-translate-x-1 duration-500' type="button" onClick={toggleExpand}>
+            <button className='flex cursor-pointer rounded-lg bg-slate-100 w-full h-8 items-center justify-center hover:-translate-x-1 duration-500' type="button" onClick={toggleExpand}>
                 {expanded ? 'Ocultar' : 'Agregar'} {tittle}
                 <IoIosArrowDown />
             </button>
@@ -41,11 +41,12 @@ const MediaForm = ({ input, tittle, data }) => {
             ))}
             {
                 expanded ? (
-                    <div className='gap-5'>
-                        <InputField inputName='title' type='text' inputValue={title} inputOnchage={InputChange} />
-                        <InputField inputName='personage' type='text' inputValue={personage} inputOnchage={InputChange} />
-                        <InputField inputName='year' type='number' inputValue={year} inputOnchage={InputChange} />
-                        <button type="button" onClick={addMovie}>Agregar Película</button>
+                    <div className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center">
+                        <InputField nameField='Titulo' inputName='title' type='text' inputValue={title} inputOnchage={InputChange} />
+                        <InputField nameField='Personaje' inputName='personage' type='text' inputValue={personage} inputOnchage={InputChange} />
+                        <InputField nameField='Year' inputName='year' type='number' inputValue={year} inputOnchage={InputChange} />
+                        <input onClick={addMovie} className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Agregar" />
+
                     </div>
                 ) : null
             }
