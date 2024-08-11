@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const readCharacterSchema = new Schema({{
+const readCharacterSchema = new Schema({
     actorId: {
         type: Schema.Types.ObjectId,
         ref: "Actor",

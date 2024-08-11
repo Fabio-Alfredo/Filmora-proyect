@@ -12,7 +12,7 @@ export const saveActor = async (actor, id) => {
 }
 
 export const getActors = async (page, limit, filters) => {
-    const actors = await paginate(Actor, page, limit, filters);
+    const actors = await find()
     return actors;
 }
 
