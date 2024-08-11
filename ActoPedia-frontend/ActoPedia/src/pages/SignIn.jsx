@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import InputField from '../components/AuthComponents/InputField';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import {login} from '../services/Auth.service';
 import { AuthContext } from '../context/AuthContext';
@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 const SignIn = () => {
 
     const {saveToken} = useContext(AuthContext );
+    const navigate = useNavigate();
 
     const{email, password, InputChange} = useForm({
         email: '',
@@ -23,7 +24,7 @@ const SignIn = () => {
             }
             const res = await login(data);
             saveToken(res.token);
-            
+            navigate('/ListActors');
         }catch(error){
             console.error(error);
         }
