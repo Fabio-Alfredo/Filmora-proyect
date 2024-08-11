@@ -18,8 +18,8 @@ const ListActors = () => {
 
     const getActorsFuction = async () => {
         const res = await getActors();
-        console.log(res.data);
-        setActors(res.data);
+        console.log(res);
+        setActors(res);
     }
 
     const handleNavigate = () => {
