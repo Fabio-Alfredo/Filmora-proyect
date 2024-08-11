@@ -44,7 +44,7 @@ const MediaForm = ({ input, tittle, data }) => {
                     <div className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center">
                         <InputField nameField='Titulo' inputName='title' type='text' inputValue={title} inputOnchage={InputChange} />
                         <InputField nameField='Personaje' inputName='personage' type='text' inputValue={personage} inputOnchage={InputChange} />
-                        <InputField nameField='description' inputName='description' type='number' inputValue={description} inputOnchage={InputChange} />
+                        <InputField nameField='description' inputName='description' type='text' inputValue={description} inputOnchage={InputChange} />
                         <input onClick={addMovie} className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Agregar" />
 
                     </div>
