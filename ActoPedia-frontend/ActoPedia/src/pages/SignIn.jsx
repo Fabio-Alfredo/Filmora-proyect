@@ -1,8 +1,18 @@
 import React from 'react';
 import InputField from '../components/AuthComponents/InputField';
 import { NavLink } from 'react-router-dom';
+import { useForm } from '../hooks/useForm';
+
 
 const SignIn = () => {
+
+    const{email, password, InputChange} = useForm({
+        email: '',
+        password: ''
+    });
+
+    
+
     return (
         <>
             <div className="flex flex-col justify-center items-center w-screen h-screen bg-gradient-to-l from-stone-950 via-stone-900 to-stone-600 bg-300% animate-gradient">
@@ -11,8 +21,8 @@ const SignIn = () => {
                         Sign In
                     </p>
                     <form className="flex flex-col gap-5 w-4/5 3xl:w-3/4 items-center"  >
-                        <InputField nameField="email" inputName={"email"} type="text" placeH="e.g. NimbusX" />
-                        <InputField nameField="Password" inputName={"password"} type="password" />
+                        <InputField nameField="email" inputName={"email"} type="text" placeH="e.g. NimbusX" inputValue={email} inputOnchage={InputChange} />
+                        <InputField nameField="Password" inputName={"password"} type="password" inputValue={password} inputOnchage={InputChange}  />
                         <input className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Sign In" />
                         <div className="flex gap-5 font-Roboto mt-2">
                             <p>Aun no tienes una cuenta?
