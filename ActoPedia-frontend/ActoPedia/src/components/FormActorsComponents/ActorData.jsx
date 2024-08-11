@@ -33,7 +33,7 @@ const ActorData = ({ data }) => {
                 <div className='w-full'>
                     <span className={`font-Nunito font-medium text-lg self-start 'text-white'}`}>biography</span>
                     <textarea className="p-3 min-w-full bg-slate-200/55 text-white font-Nunito ring-2 ring-white rounded-lg transition ease-in-out duration-200 focus:bg-slate-950/70 focus:outline-slate-950 focus:shadow-2xl focus:shadow-slate-200 "
-                        name="Biografia" type="textarea" value={biography} onChange={InputChange} placeholder="e.g. Actor de doblaje" />
+                        name="biography" type="textarea" value={biography} onChange={InputChange} placeholder="e.g. Actor de doblaje" />
                 </div>
                 {/* <input className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Enviar" /> */}
             </div>
