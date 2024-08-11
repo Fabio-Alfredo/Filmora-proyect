@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addReader } from '../../services/reader.service';
+import { addReader, deleteReader } from '../../services/reader.service';
 
 
 const CardActor = ({ actor, reader }) => {
@@ -17,13 +17,19 @@ const CardActor = ({ actor, reader }) => {
     const handleCheck = async (e) => {
         console.log(actor._id)
         setChecked(!checked);
-        try{
-            const data ={
-                actorId: actor._id
+        try {
+            if (!checked) {
+                const data = {
+                    actorId: actor._id
+                }
+                const res = await addReader(data);
+                console.log(res);
+            }else{
+                
+                const res = await deleteReader(actor._id);
+                console.log(res);
             }
-            const res = await addReader(data);
-            console.log(res);
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
     }

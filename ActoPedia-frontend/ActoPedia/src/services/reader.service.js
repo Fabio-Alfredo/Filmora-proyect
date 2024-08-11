@@ -11,7 +11,7 @@ export const getReaders = async () => {
             }
         });
         return res.data;
-    }catch(error){
+    } catch (error) {
         throw error.response.data;
     }
 }
@@ -25,7 +25,22 @@ export const addReader = async (reader) => {
             }
         });
         return res.data;
-    }catch(error){
+    } catch (error) {
+        throw error.response.data;
+    }
+}
+
+export const deleteReader = async (reader) => {
+    try {
+        const res = await axios.delete(`http://localhost:3001/reader/deleteReader/${reader}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getToken()}`
+            },
+        });
+        return res.data;
+    }
+    catch (error) {
         throw error.response.data;
     }
 }
