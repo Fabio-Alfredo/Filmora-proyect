@@ -4,6 +4,7 @@ import MediaForm from '../components/FormActorsComponents/MediaForm';
 import { createActor } from '../services/actor.service';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 
 
@@ -26,6 +27,12 @@ const FormActor = () => {
             navigate('/home');
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.error}`,
+                footer: 'Intenta de nuevo'
+            })
         }
     }
     
@@ -43,7 +50,7 @@ const FormActor = () => {
                     <MediaForm input='temporada' tittle='Series' data={setSeries} />
                     <MediaForm input='libro' tittle='Libros' data={setBooks} />
                     <MediaForm input='voz' tittle='Voces' data={setVoices} />
-                    <input className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Sign In" />
+                    <input className="bg-black min-w-[50%] p-4 text-white font-Roboto self-end rounded-xl mt-6 hover:bg-slate-100/70 hover:text-black transition ease-in-out duration-200 hover:ring-2 hover:ring-black" type="submit" value="Crear Actor" />
                 </form>
             </div>
         </div>

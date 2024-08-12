@@ -1,10 +1,11 @@
 import axios from "axios";
+const API_URL = import.meta.env.VITE_ACTOR;
 
 const getToken = () => localStorage.getItem('token');
 
 export const getActors = async () => {
     try {
-        const res = await axios.get('http://localhost:3001/actor/authors', {
+        const res = await axios.get(`${API_URL}/authors`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}`
@@ -18,7 +19,7 @@ export const getActors = async () => {
 
 export const createActor = async (actor) => {
     try {
-        const res = await axios.post('http://localhost:3001/actor/create', actor, {
+        const res = await axios.post(`${API_URL}/create`, actor, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${getToken()}`

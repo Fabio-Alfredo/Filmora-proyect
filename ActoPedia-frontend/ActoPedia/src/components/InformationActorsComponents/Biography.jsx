@@ -2,11 +2,11 @@ import React from 'react';
 
 const Biography = ({Biography}) => {
     return (
-        <>
-            <p className='px-10 py-6 text-xl text-center'>
+        <div className='w-ful'>
+            <p className='px-10 py-6 text-xl text-center whitespace-normal break-words'>
                 {Biography}
             </p>
-        </>
+        </div>
     );
 };
 
