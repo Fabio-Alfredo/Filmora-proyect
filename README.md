@@ -54,6 +54,11 @@ The main API endpoints are detailed below:
 - **Path:** `/actor/create`
 - **Description:** Create a new actor with information about his performances.
 
+## Get Actor by name
+- **Method:** `GET`
+- **Path:** `/actor/getByName`
+- **Description:** Get information about an actor from his name or similarities.
+
 ## Get readers
 - **Method:** `GET`
 - **Path:** `/reader/getReaders`
