@@ -1,3 +1,4 @@
+
 import { User } from "../models/user.model.js";
 import {hashPassword, comparePassword} from '../utils/password.handle.js'
 import {sign} from '../utils/jwt.handle.js'
@@ -16,6 +17,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
+
     const existsUser = await User.findOne({email:email})
     if(!existsUser) throw new HttpError(404, "Invalid credentials")
 
@@ -24,4 +26,5 @@ export const login = async (req, res) => {
 
     const token = sign({email:existsUser.email, id:existsUser._id})
     return {token};
+
 }
