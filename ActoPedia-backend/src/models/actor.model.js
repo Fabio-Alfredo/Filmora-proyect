@@ -26,8 +26,8 @@ const actorSchema = new Schema({
             type: String,
             required: true
         },
-        year: {
-            type: Number,
+        description: {
+            type: String,
             required: true
         }
     }],
@@ -40,8 +40,8 @@ const actorSchema = new Schema({
             type: String,
             required: true
         },
-        season: {
-            type: Number,
+        description: {
+            type: String,
             required: true
         }
     }],
@@ -54,13 +54,9 @@ const actorSchema = new Schema({
             type: String,
             required: true
         },
-        year: {
-            type: Number,
-            required: true
-        },
-        author: {
+        description: {
             type: String,
-            default: "Anonimo"
+            required: true
         }
     }],
     voices: [{
@@ -69,6 +65,10 @@ const actorSchema = new Schema({
             required: true
         },
         personage: {
+            type: String,
+            required: true
+        },
+        description: {
             type: String,
             required: true
         }
