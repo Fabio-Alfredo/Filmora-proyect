@@ -38,7 +38,7 @@ const MediaForm = ({ input, tittle, data }) => {
                     <h3 className='font-bold'>Película {index + 1}</h3>
                     <p className='font-bold'>Título: {movie.title}</p>
                     <p className='font-bold'>Personaje: {movie.personage}</p>
-                    <p className='font-bold'>{input} {movie.description}</p>
+                    <p className='font-bold'>Descripcion: {movie.description}</p>
                 </div>
             ))}
             {

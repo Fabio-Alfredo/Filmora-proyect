@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addReader, deleteReader } from '../../services/reader.service';
-
+import Swal from 'sweetalert2';
 
 const CardActor = ({ actor, reader }) => {
 
@@ -24,13 +24,19 @@ const CardActor = ({ actor, reader }) => {
                 }
                 const res = await addReader(data);
                 console.log(res);
-            }else{
-                
+            } else {
+
                 const res = await deleteReader(actor._id);
                 console.log(res);
             }
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.error}`,
+                footer: 'Intenta de nuevo'
+            })
         }
     }
 
@@ -53,7 +59,7 @@ const CardActor = ({ actor, reader }) => {
                         </p>
                     </div>
                     <div className=' flex-col items-center my-1  '>
-                        <p className='font-popins font-bold text-sm   sm:text-lg lg:text-xl items-center p-0 md:px-2 select-none '>Nacimiento</p>
+                        <p className='font-popins font-bold text-sm   sm:text-lg lg:text-xl items-center p-0 md:px-2 select-none '>Edad</p>
                         <p className='font-popins overflow-hidden text-center text-xs sm:text-lg lg:text-xl  text-gray-500 select-none'>
                             {actor.age}
                         </p>

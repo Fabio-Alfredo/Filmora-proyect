@@ -2,9 +2,9 @@ import React from 'react';
 
 const DetailList = ({title, info}) => {
     return (
-        <div className='flex'>
-            <ul className='text-center'>
-                <li>{info}</li>
+        <div >
+            <ul className=''>
+                <li className='whitespace-normal break-words'>{info}</li>
             </ul>
         </div>
     );
